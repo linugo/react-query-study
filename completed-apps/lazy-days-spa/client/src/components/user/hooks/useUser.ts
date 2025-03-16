@@ -28,6 +28,7 @@ export function useUser() {
 
   // call useQuery to update user data from server
   const { data: user } = useQuery({
+    // 사용자가 로그인 안했을 때, userId는 null. 이땐 쿼리함수 실행 안하게 enabled 설정
     enabled: !!userId,
     queryKey: generateUserKey(userId, userToken),
     queryFn: () => getUser(userId, userToken),
